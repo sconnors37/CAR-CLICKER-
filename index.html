@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Cat clicker!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="main.css">
+
+    </head>
+    <body>
+
+        <h1 id="header">Here is a beautiful majestic car clicker</h1>
+
+    <div style="width: 100%; overflow: hidden;">
+
+        <div style="width: 200px; float: left;" id="carnames">
+            <ul id="list"></ul> 
+        </div>
+   
+    
+     <div style="margin-left: 220px;" id="car">
+            <label for="carname1" id="carlabel1"></label><br>
+            <input type="image" src="images/gp2.jpg" id="carpic1" width="30%" /> 
+            <div id="displaycount">0</div>         
+        </div>
+    <br><br>
+
+        
+
+        <script>
+
+//car name data
+    //var cars = ['GP2', 'F1', 'Indy 500', 'Indycar (Black)', 'Indycar (Green)'];
+    //var carpics = ['images/gp2.jpg','images/manor.jpg', 'images/indy500.jpg', 'images/indycar.jpg', 'images/castrolindy.jpg' ];
+    
+
+//FUCK WITH CLICKS RIGHT NOW. on click, carpic1, called by carpics, should match index of car clicked.
+
+//okay we are gonna use an object constructor here. 
+
+var cars = [];
+
+function car(series, imageURL){
+    this.series = series;
+    this.numClicks = 0;
+    this.imageURL = imageURL;
+    }
+
+//here are all ur cars. look at their glory. here is where we keep the series name and car image URL that will be called by the click
+
+cars[0] = new car('GP2', 'images/gp2.jpg');
+cars[1] = new car('F1', 'images/manor.jpg');
+cars[2] = new car('Indy 500', 'images/indy500.jpg');
+cars[3] = new car('Indycar Black', 'images/indycar.jpg');
+cars[4] = new car('Indycar Green', 'images/castrolindy.jpg');
+   
+        
+//do the loop thing. here is: determining that the list length = the length of the car list. J is basically how we're gonna call the number in ur car list up there
+
+for (var j = 0; j < cars.length; j++) {
+    var num = j;
+
+//MAKE A DANG LIST
+    var carelem = document.createElement('li'); //HERE ARE UR DANG LIST ITEMS
+    carelem.textContent = cars[j].series; //make sure u capitalize shit because javascript is nonsense
+
+//TIME TO MAKE THE CLICKS!!! when das katzen are clicked, update the photo. EVENT LISTENERS 5EVER
+
+ carelem.addEventListener('click', (function(numCopy) {
+                return function(){
+                cars[numCopy].numClicks = cars[numCopy].numClicks + 1; //DAS KATZEN CLICK NUMBER GOES UP 
+                displayCar(numCopy);
+                };
+            })(num));
+
+
+    document.getElementById('list').appendChild(carelem); //PORT THAT LIST TO UR HTML THERE U GO LOOKIT U 
+
+ };
+            
+
+//ALRIGHT YALL LETS ADD ALL THIS OTHER STUFF TO THE HTML ON THE RIGHT: TEXT, CAR, CLICKY COUNTER THING 
+
+var displayCar = function(num){
+    document.getElementById('carlabel1').innerHTML= cars[num].series;
+    document.getElementById('carpic1').src = cars[num].imageURL;
+    document.getElementById('displaycount').innerHTML = 'u have clicked this majestic car ' + cars[num].numClicks + ' times';
+
+
+
+};
+
+
+//DID U DO IT??? GO TEST THE THING????
+
+        </script>
+
+    </body>
+</html>
+
+
+
