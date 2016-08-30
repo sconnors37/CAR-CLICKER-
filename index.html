@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Cat clicker!</title>
+        <title>Car clicker!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -67,11 +67,11 @@ for (var j = 0; j < cars.length; j++) {
     var carelem = document.createElement('li'); //HERE ARE UR DANG LIST ITEMS
     carelem.textContent = cars[j].series; //make sure u capitalize shit because javascript is nonsense
 
-//TIME TO MAKE THE CLICKS!!! when das katzen are clicked, update the photo. EVENT LISTENERS 5EVER
+//TIME TO MAKE THE CLICKS!!! when das vehicles are clicked, update the photo. EVENT LISTENERS 5EVER
 
  carelem.addEventListener('click', (function(numCopy) {
                 return function(){
-                cars[numCopy].numClicks = cars[numCopy].numClicks + 1; //DAS KATZEN CLICK NUMBER GOES UP 
+                cars[numCopy].numClicks = cars[numCopy].numClicks + 1; //CAR CLICK NUMBER GOES UP 
                 displayCar(numCopy);
                 };
             })(num));
